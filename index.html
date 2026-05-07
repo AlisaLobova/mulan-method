@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Метод Мулан — Телесная практика</title>
+<meta name="description" content="Практика для тех, кто думает много, а чувствует тело мало. Цигун, биомеханика, somatic awareness — без эзотерики, без клише.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111110;
+  --ink-60:rgba(17,17,16,.6);
+  --ink-30:rgba(17,17,16,.3);
+  --ink-10:rgba(17,17,16,.08);
+  --paper:#F5F3EE;
+  --paper-warm:#EDE9E1;
+  --accent:#2D4A3E;
+  --accent-light:#3D6455;
+  --accent-pale:#E8EDE9;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --r:2px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(245,243,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--ink-10)}
+.nav-logo{font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:.04em;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:var(--ink-60);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;letter-spacing:.04em;border:1px solid var(--accent);padding:8px 20px;border-radius:var(--r);transition:all .2s}
+.nav-cta:hover{background:var(--accent);color:#fff}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:0 48px;padding-top:90px;gap:0;position:relative;overflow:hidden;align-items:center}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 0;max-width:540px}
+.hero-eyebrow{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-60);margin-bottom:32px}
+.hero-title{font-family:var(--serif);font-size:clamp(54px,7vw,88px);font-weight:300;line-height:1.0;letter-spacing:-.01em;color:var(--ink);margin-bottom:32px}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:17px;font-weight:300;line-height:1.75;color:var(--ink-60);max-width:420px;margin-bottom:48px}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.03em;padding:14px 28px;border-radius:var(--r);text-decoration:none;transition:all .25s;border:1px solid var(--accent)}
+.btn-primary:hover{background:var(--accent-light);border-color:var(--accent-light);transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-family:var(--sans);font-size:14px;font-weight:400;letter-spacing:.03em;padding:14px 0;text-decoration:none;border-bottom:1px solid var(--ink-30);transition:all .2s}
+.btn-secondary:hover{color:var(--accent);border-color:var(--accent)}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;height:100vh}
+.hero-img-block{width:380px;height:560px;background:var(--paper-warm);border-radius:200px 200px 0 0;position:relative;overflow:hidden;border:1px solid var(--ink-10);display:flex;align-items:center;justify-content:center}
+.hero-img-inner{font-family:var(--serif);font-size:140px;color:var(--ink-10);font-weight:300;user-select:none;line-height:1}
+.hero-float-card{position:absolute;bottom:100px;left:-40px;background:var(--paper);border:1px solid var(--ink-10);border-radius:4px;padding:20px 24px;max-width:220px;box-shadow:0 8px 40px rgba(0,0,0,.06)}
+.hero-float-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-30);margin-bottom:8px}
+.hero-float-text{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.35;color:var(--ink)}
+.hero-scroll{position:absolute;bottom:40px;left:0;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-30)}
+.hero-scroll-line{width:48px;height:1px;background:var(--ink-30)}
+
+/* STRIP */
+.strip{padding:32px 48px;border-top:1px solid var(--ink-10);border-bottom:1px solid var(--ink-10);overflow:hidden}
+.strip-items{display:flex;gap:48px;flex-wrap:wrap}
+.strip-item{font-size:12px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:14px;white-space:nowrap}
+.strip-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+/* SECTIONS */
+section{padding:120px 48px}
+.section-label{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);margin-bottom:48px;display:block}
+
+/* PROBLEM */
+.problem{background:var(--paper)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.big-quote{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.25;letter-spacing:-.01em;color:var(--ink);margin-bottom:32px}
+.big-quote em{font-style:italic;color:var(--accent)}
+.problem-left p{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink-60);max-width:440px}
+.problem-right{padding-top:80px}
+.symptom-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.symptom-item{padding:20px 0;border-bottom:1px solid var(--ink-10);display:flex;gap:20px;align-items:flex-start}
+.symptom-num{font-family:var(--serif);font-size:13px;color:var(--ink-30);font-weight:400;flex-shrink:0;margin-top:4px}
+.symptom-text{font-size:15px;font-weight:300;color:var(--ink);line-height:1.6}
+
+/* APPROACH */
+.approach{background:var(--accent);color:#fff}
+.approach .section-label{color:rgba(255,255,255,.35)}
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.approach-headline{font-family:var(--serif);font-size:clamp(36px,4.5vw,60px);font-weight:300;line-height:1.2;letter-spacing:-.01em;color:#fff;margin-bottom:40px}
+.approach-headline em{font-style:italic;opacity:.6}
+.approach-left p{font-size:16px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.6);max-width:440px;margin-bottom:20px}
+.approach-right{display:flex;flex-direction:column;gap:0}
+.approach-item{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:24px;align-items:flex-start}
+.approach-icon{width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--serif);font-size:17px;color:rgba(255,255,255,.55);line-height:1}
+.approach-text h4{font-size:15px;font-weight:500;color:#fff;margin-bottom:6px;letter-spacing:.01em}
+.approach-text p{font-size:14px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.5)}
+
+/* PROCESS */
+.process{background:var(--ink);color:#fff;padding:120px 48px}
+.process .section-label{color:rgba(255,255,255,.25)}
+.process-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:72px}
+.process-header h2{font-family:var(--serif);font-size:clamp(36px,4.5vw,56px);font-weight:300;line-height:1.2;color:#fff}
+.process-header h2 em{font-style:italic;opacity:.45}
+.process-header p{font-size:16px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.45)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.process-step{background:rgba(255,255,255,.04);padding:40px 32px}
+.step-num{font-family:var(--serif);font-size:52px;font-weight:300;color:rgba(255,255,255,.07);line-height:1;margin-bottom:24px}
+.step-title{font-size:15px;font-weight:500;color:#fff;margin-bottom:12px;letter-spacing:.02em}
+.step-desc{font-size:14px;font-weight:300;line-height:1.65;color:rgba(255,255,255,.4)}
+
+/* FORMATS */
+.formats{background:var(--paper-warm);padding:120px 48px}
+.formats-header{margin-bottom:64px;max-width:640px}
+.formats-header h2{font-family:var(--serif);font-size:clamp(36px,4.5vw,56px);font-weight:300;line-height:1.2;color:var(--ink);margin-top:16px}
+.formats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.format-card{background:var(--paper);padding:40px 36px;transition:background .2s;position:relative}
+.format-card:hover{background:#fff}
+.format-tag{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block}
+.format-card h3{font-family:var(--serif);font-size:26px;font-weight:300;line-height:1.25;color:var(--ink);margin-bottom:16px}
+.format-desc{font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-60);margin-bottom:28px}
+.format-price{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.format-price-sub{font-size:13px;color:var(--ink-30);font-weight:300}
+.format-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;letter-spacing:.03em;margin-top:20px;border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s}
+.format-card:hover .format-cta{border-color:var(--accent)}
+.format-featured{border-top:2px solid var(--accent)}
+.lab-block{margin-top:32px;padding:32px 36px;background:var(--accent-pale);border-radius:2px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.lab-label{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.lab-desc{font-size:15px;font-weight:300;color:var(--ink);max-width:480px;line-height:1.6}
+
+/* ABOUT */
+.about{background:var(--paper);padding:120px 48px;overflow:hidden}
+.about-grid{display:grid;grid-template-columns:5fr 4fr;gap:80px;align-items:center}
+.about-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);margin-bottom:32px;display:block}
+.about-left h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.2;color:var(--ink);margin-bottom:28px}
+.about-intro{font-size:18px;font-weight:300;line-height:1.75;color:var(--ink);margin-bottom:24px;font-family:var(--serif)}
+.about-body{font-size:15px;font-weight:300;line-height:1.85;color:var(--ink-60);margin-bottom:40px}
+.credential-list{display:flex;flex-direction:column;gap:0}
+.credential{display:flex;gap:20px;padding:16px 0;border-top:1px solid var(--ink-10);align-items:flex-start}
+.credential-mark{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:8px}
+.credential-text{font-size:14px;font-weight:300;color:var(--ink-60);line-height:1.6}
+.credential-text strong{font-weight:500;color:var(--ink)}
+.about-right{display:flex;justify-content:center}
+.about-portrait{width:340px;height:440px;background:var(--paper-warm);border-radius:200px 200px 0 0;border:1px solid var(--ink-10);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.about-portrait-glyph{font-family:var(--serif);font-size:90px;color:var(--ink-10);font-weight:300;line-height:1}
+.about-portrait-name{position:absolute;bottom:32px;left:0;right:0;text-align:center;font-family:var(--serif);font-size:16px;font-weight:400;color:var(--ink-60);letter-spacing:.04em}
+
+/* PROOF */
+.proof{background:var(--accent-pale);padding:100px 48px}
+.proof-inner{max-width:720px;margin:0 auto;text-align:center}
+.proof-quote{font-family:var(--serif);font-size:clamp(24px,3.5vw,40px);font-weight:300;line-height:1.4;color:var(--ink);margin-bottom:40px}
+.proof-quote::before{content:'\201C';color:var(--accent);font-size:1.2em}
+.proof-quote::after{content:'\201D';color:var(--accent);font-size:1.2em}
+.proof-source{display:flex;align-items:center;justify-content:center;gap:16px}
+.proof-avatar{width:40px;height:40px;background:var(--paper-warm);border-radius:50%;border:1px solid var(--ink-10);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--ink-60)}
+.proof-meta{text-align:left}
+.proof-name{font-size:14px;font-weight:500;color:var(--ink);line-height:1.3}
+.proof-role{font-size:13px;font-weight:300;color:var(--ink-60)}
+
+/* FAQ */
+.faq{background:var(--paper);padding:120px 48px}
+.faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.faq-left h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:300;line-height:1.2;color:var(--ink);margin-top:16px;margin-bottom:24px}
+.faq-left p{font-size:15px;font-weight:300;color:var(--ink-60);line-height:1.75}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-top:1px solid var(--ink-10)}
+.faq-item:last-child{border-bottom:1px solid var(--ink-10)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:24px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:var(--sans);font-size:15px;font-weight:400;color:var(--ink);letter-spacing:.01em;gap:24px;transition:color .2s}
+.faq-q:hover{color:var(--accent)}
+.faq-arrow{width:20px;height:20px;flex-shrink:0;transition:transform .3s;color:var(--ink-30)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a.open{max-height:300px}
+.faq-a-inner{padding-bottom:24px;font-size:14px;font-weight:300;line-height:1.8;color:var(--ink-60)}
+.faq-item.active .faq-arrow{transform:rotate(45deg)}
+
+/* CTA FINAL */
+.cta-final{background:var(--paper-warm);padding:140px 48px;text-align:center}
+.cta-final-inner{max-width:680px;margin:0 auto}
+.cta-eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-30);margin-bottom:32px;display:block}
+.cta-final h2{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:24px}
+.cta-final h2 em{font-style:italic;color:var(--accent)}
+.cta-final p{font-size:17px;font-weight:300;line-height:1.75;color:var(--ink-60);max-width:480px;margin:0 auto 48px}
+.cta-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-note{font-size:13px;font-weight:300;color:var(--ink-30);margin-top:24px}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--ink-10)}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:60px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;letter-spacing:.04em}
+.footer-links{display:flex;gap:32px;list-style:none}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.22)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:fadeUp .7s ease forwards}
+.d1{animation-delay:.08s}
+.d2{animation-delay:.22s}
+.d3{animation-delay:.38s}
+.d4{animation-delay:.52s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding:120px 40px 80px}
+  .hero-right{display:none}
+  .hero-scroll{left:0}
+}
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  .hero{padding:100px 24px 60px}
+  section{padding:80px 24px}
+  .problem-grid,.approach-grid,.about-grid,.faq-grid,.process-header{grid-template-columns:1fr;gap:40px}
+  .formats-grid,.process-steps{grid-template-columns:1fr;gap:2px}
+  .formats{padding:80px 24px}
+  .process{padding:80px 24px}
+  .about{padding:80px 24px}
+  .faq{padding:80px 24px}
+  .about-right{display:none}
+  .proof{padding:80px 24px}
+  .cta-final{padding:80px 24px}
+  footer{padding:40px 24px;flex-direction:column;text-align:center}
+  .strip{padding:28px 24px}
+  .problem-right{padding-top:0}
+  .lab-block{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Метод Мулан</a>
+  <ul class="nav-links">
+    <li><a href="#approach">Подход</a></li>
+    <li><a href="#formats">Форматы</a></li>
+    <li><a href="#about">Алиса</a></li>
+    <li><a href="#faq">Вопросы</a></li>
+  </ul>
+  <a href="#formats" class="nav-cta">Записаться</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow anim">Телесная практика · Цигун · Биомеханика</span>
+    <h1 class="hero-title anim d1">Тело<br>как <em>точка<br>опоры</em></h1>
+    <p class="hero-sub anim d2">Практика для тех, кто думает много, а чувствует тело мало. Работа с движением, дыханием и вниманием — без эзотерики, без клише.</p>
+    <div class="hero-actions anim d3">
+      <a href="#formats" class="btn-primary">Пробное занятие →</a>
+      <a href="#approach" class="btn-secondary">Как это работает</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-block">
+      <div class="hero-img-inner">龙</div>
+    </div>
+    <div class="hero-float-card anim d4">
+      <div class="hero-float-label">Онлайн-группа</div>
+      <div class="hero-float-text">Ср 8:00 / Сб 9:00 МСК</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-line"></span>
+    Прокрутите
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-items">
+    <span class="strip-item"><span class="strip-dot"></span>Цигун и тайцзи</span>
+    <span class="strip-item"><span class="strip-dot"></span>Биомеханика движения</span>
+    <span class="strip-item"><span class="strip-dot"></span>Функциональный тренинг</span>
+    <span class="strip-item"><span class="strip-dot"></span>Somatic awareness</span>
+    <span class="strip-item"><span class="strip-dot"></span>Философия единоборств</span>
+    <span class="strip-item"><span class="strip-dot"></span>Well-being системно</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="problem-grid">
+    <div class="problem-left">
+      <span class="section-label">Для кого это</span>
+      <p class="big-quote">Вы устали от абстракций. Тело где-то <em>рядом</em>, но не с вами.</p>
+      <p>Много работы с головой — мало с телом. Хроническое напряжение, которое не снимается отпуском. Психология помогает понять, но не почувствовать. Вы ищете что-то конкретное, работающее, без избыточных обещаний.</p>
+    </div>
+    <div class="problem-right">
+      <ul class="symptom-list">
+        <li class="symptom-item">
+          <span class="symptom-num">01</span>
+          <span class="symptom-text">Фоновое напряжение, которое не уходит после отдыха</span>
+        </li>
+        <li class="symptom-item">
+          <span class="symptom-num">02</span>
+          <span class="symptom-text">Потеря контакта с собственным телом — оно работает, но не ощущается</span>
+        </li>
+        <li class="symptom-item">
+          <span class="symptom-num">03</span>
+          <span class="symptom-text">Усталость от wellness-контента: слишком много слов, мало практики</span>
+        </li>
+        <li class="symptom-item">
+          <span class="symptom-num">04</span>
+          <span class="symptom-text">Нужна структура и внимание, а не вдохновение и мотивация</span>
+        </li>
+        <li class="symptom-item">
+          <span class="symptom-num">05</span>
+          <span class="symptom-text">Сложно замедлиться без ощущения, что теряешь время</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="approach-grid">
+    <div class="approach-left">
+      <span class="section-label">Подход</span>
+      <h2 class="approach-headline">Не терапия.<br>Не спорт.<br><em>Практика.</em></h2>
+      <p>Метод Мулан — это работа на пересечении биомеханики, телесного внимания и философии движения. Каждое занятие выстраивается под вас: ваш ритм, ваше состояние, ваш запрос.</p>
+      <p>Основа — традиции китайских боевых искусств и цигун. Инструмент — понимание того, как работает тело, а не набор универсальных упражнений.</p>
+    </div>
+    <div class="approach-right">
+      <div class="approach-item">
+        <div class="approach-icon">体</div>
+        <div class="approach-text">
+          <h4>Цигун и тайцзи</h4>
+          <p>Работа с напряжением через мягкое движение, дыхание и внимание. Вы учитесь слышать тело, а не подавлять сигналы.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon">力</div>
+        <div class="approach-text">
+          <h4>Биомеханика</h4>
+          <p>Анализ движения, работа с осанкой и паттернами нагрузки. Без шаблонов — с учётом вашей анатомии и истории.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon">心</div>
+        <div class="approach-text">
+          <h4>Somatic awareness</h4>
+          <p>Развитие чувствительности к внутренним состояниям. Зажимы, реакции, автоматизмы — всё это можно проработать.</p>
+        </div>
+      </div>
+      <div class="approach-item">
+        <div class="approach-icon">道</div>
+        <div class="approach-text">
+          <h4>Философия практики</h4>
+          <p>Движение как осознанный процесс. Традиции мастеров — не как метафора, а как рабочий инструмент.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <span class="section-label">Как устроено занятие</span>
+  <div class="process-header">
+    <h2>Каждая встреча —<br>это <em>диалог</em></h2>
+    <p>Не программа, не протокол. Занятие выстраивается под ваше состояние здесь и сейчас — по дыханию, по отклику тела, по запросу.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Контакт</div>
+      <div class="step-desc">Короткий разговор о состоянии, ритме дня, запросе. Это определяет то, как строится практика.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Настройка</div>
+      <div class="step-desc">Дыхание, внимание, разогрев. Тело постепенно переходит из режима реакции в режим присутствия.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Практика</div>
+      <div class="step-desc">Цигун, движение, работа с конкретными паттернами напряжения. Глубина — через внимание, не через усилие.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Интеграция</div>
+      <div class="step-desc">Завершение, наблюдение. Что изменилось? Что осталось? Как это перенести в обычный день.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="formats" id="formats">
+  <div class="formats-header">
+    <span class="section-label">Форматы</span>
+    <h2>Выберите<br>свой ритм</h2>
+  </div>
+  <div class="formats-grid">
+    <div class="format-card">
+      <span class="format-tag">Первый шаг</span>
+      <h3>Пробное занятие</h3>
+      <p class="format-desc">60 минут, чтобы понять, подходит ли вам этот метод. Индивидуально. Без обязательств.</p>
+      <div class="format-price">2 000 ₽</div>
+      <div class="format-price-sub">Онлайн · 60 мин · индивидуально</div>
+      <a href="https://t.me/" class="format-cta">Записаться →</a>
+    </div>
+    <div class="format-card format-featured">
+      <span class="format-tag">Популярный выбор</span>
+      <h3>Онлайн-группа</h3>
+      <p class="format-desc">Регулярная практика в маленькой группе. Среда 8:00 и Суббота 9:00 МСК. Для тех, кто хочет встроить движение в жизнь.</p>
+      <div class="format-price">1 200 ₽</div>
+      <div class="format-price-sub">За занятие · 75 мин · 2× в неделю</div>
+      <a href="https://t.me/" class="format-cta">Записаться →</a>
+    </div>
+    <div class="format-card">
+      <span class="format-tag">Глубокая работа</span>
+      <h3>Индивидуально</h3>
+      <p class="format-desc">Только вы и практика. Онлайн или офлайн в Москве и Пхукете. Абонемент на 4 занятия — 12 000 ₽.</p>
+      <div class="format-price">3 500 ₽</div>
+      <div class="format-price-sub">Онлайн / 7 000 ₽ офлайн · 60 мин</div>
+      <a href="https://t.me/" class="format-cta">Записаться →</a>
+    </div>
+  </div>
+  <div class="lab-block">
+    <div>
+      <div class="lab-label">Телесная лаборатория</div>
+      <p class="lab-desc">Исследовательский формат. Движение + танец + телесное восприятие. Онлайн и офлайн — анонсы в Telegram-канале.</p>
+    </div>
+    <a href="https://t.me/" class="btn-secondary">Следить за анонсами →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <span class="about-eyebrow">Алиса Лобова</span>
+      <h2>Практик.<br>Не теоретик.</h2>
+      <p class="about-intro">Я занимаюсь единоборствами с детства — тайский бокс, крав-мага, капоэйра, кунг-фу. Цигун и тайцзи изучала в Китае, в живой традиции мастеров.</p>
+      <p class="about-body">Как историк и китаист, я погрузилась в философию китайской телесной культуры не ради экзотики — ради понимания того, как устроено движение изнутри. Параллельно 10 лет работаю в сфере образования, создавая программы, которые реально меняют поведение людей. Это сильно влияет на то, как я строю практику.</p>
+      <div class="credential-list">
+        <div class="credential">
+          <div class="credential-mark"></div>
+          <div class="credential-text"><strong>Инструктор цигун и тайцзи</strong> — обучение в Китае, Академия Cheng Long (Москва), Tea Club Phuket</div>
+        </div>
+        <div class="credential">
+          <div class="credential-mark"></div>
+          <div class="credential-text"><strong>Инструктор по функциональному тренингу</strong> — биомеханика суставов, физиология нагрузки, построение безопасных программ</div>
+        </div>
+        <div class="credential">
+          <div class="credential-mark"></div>
+          <div class="credential-text"><strong>Наставник #Sekta</strong> — системный well-being подход, коучинг, индивидуальные стратегии изменений</div>
+        </div>
+        <div class="credential">
+          <div class="credential-mark"></div>
+          <div class="credential-text"><strong>10 лет в образовании</strong> — проектирование развивающих программ, работа с мотивацией и устойчивыми изменениями</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-portrait">
+        <div class="about-portrait-glyph">木</div>
+        <div class="about-portrait-name">Алиса Лобова</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="proof">
+  <div class="proof-inner">
+    <p class="proof-quote">После первого занятия я впервые за несколько месяцев почувствовала, что у меня есть тело. Не в метафорическом смысле — буквально.</p>
+    <div class="proof-source">
+      <div class="proof-avatar">М</div>
+      <div class="proof-meta">
+        <div class="proof-name">Мария К.</div>
+        <div class="proof-role">Продуктовый дизайнер, Москва</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-grid">
+    <div class="faq-left">
+      <span class="section-label">Вопросы</span>
+      <h2>Часто<br>спрашивают</h2>
+      <p>Если не нашли ответ — напишите напрямую в Telegram.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Нужна ли физическая подготовка?
+          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Нет. Практика адаптируется под ваше состояние, уровень подвижности и физические ограничения. Цигун — не силовой спорт, а работа с вниманием и качеством движения.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Это то же самое, что йога?
+          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Нет. Йога и цигун — разные традиции с разной философией и механикой. Цигун работает с паттернами движения через микродвижения, дыхание и внутреннее внимание. Это ближе к медитации в движении, чем к растяжке.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Что происходит на первом занятии?
+          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Мы начнём с короткого разговора о вашем состоянии и запросе. Потом — мягкая практика: дыхание, движение, наблюдение. Я покажу базовые техники и объясню, что именно происходит в теле. Ничего форсированного.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Онлайн-формат работает?
+          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Да. Большинство участников занимаются онлайн — это удобно и не снижает качество. Для цигун и соматических практик видеоформат вполне достаточен. Офлайн-занятия доступны в Москве и Пхукете.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Как часто нужно заниматься?
+          <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Минимально — 1 раз в неделю, чтобы сформировался ритм. 2 раза — оптимально для заметных изменений в течение месяца. Групповой формат (ср + сб) позволяет практиковать дважды в неделю без лишних усилий по планированию.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-final-inner">
+    <span class="cta-eyebrow">Начать</span>
+    <h2>Первый шаг —<br><em>пробное занятие</em></h2>
+    <p>60 минут. Онлайн. Вы почувствуете метод изнутри и поймёте, подходит ли он вам — без давления и обязательств.</p>
+    <div class="cta-actions">
+      <a href="https://t.me/" class="btn-primary">Записаться на пробное занятие →</a>
+      <a href="https://t.me/" class="btn-secondary">Написать в Telegram</a>
+    </div>
+    <p class="cta-note">2 000 ₽ · 60 минут · онлайн</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Метод Мулан</div>
+  <ul class="footer-links">
+    <li><a href="https://t.me/">Telegram-канал</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="https://t.me/">Написать</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Алиса Лобова · Метод Мулан</div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  var item = btn.closest('.faq-item');
+  var answer = item.querySelector('.faq-a');
+  var isOpen = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(function(i) {
+    i.classList.remove('active');
+    i.querySelector('.faq-a').classList.remove('open');
+  });
+  if (!isOpen) {
+    item.classList.add('active');
+    answer.classList.add('open');
+  }
+}
+
+// Scroll-triggered fade-in
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.format-card, .approach-item, .process-step, .credential, .symptom-item').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
